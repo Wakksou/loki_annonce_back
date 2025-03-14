@@ -64,11 +64,13 @@ class AuthController extends Controller
 
     public function user(Request $request)
     {
+        $user = $request->user()->load('annonces');
         return response()->json([
             'id' => $request->user()->id,
             'name' => $request->user()->name,
             'email' => $request->user()->email,
             'roles' => $request->user()->getRoleNames(), // pour le role utilisateur.
+            'annonces' => $user->annonces,
         ]);
     }
 
