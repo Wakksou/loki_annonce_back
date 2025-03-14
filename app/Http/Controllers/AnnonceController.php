@@ -75,7 +75,7 @@ class AnnonceController extends Controller
         if (!$Annonce){
             return response()->json(['erreur' => 'Annonce non trouvé'], 404);
         }
-        $Annonce->user_name = $Annonce->users->first() ? $Annonce->users->first()->name : null;
+        $Annonce->createdBy = $Annonce->users->first() ? $Annonce->users->first()->name : null;
         if ($Annonce->image) {
             $Annonce->image_url = url('storage/' . $Annonce->image);
         }
