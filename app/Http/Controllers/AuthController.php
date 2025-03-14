@@ -41,7 +41,7 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        if(!$user || !Hash::check($request->password, $user->password)) {
+        if (!$user || !Hash::check($request->password, $user->password)) {
             throw ValidationException::withMessages(['message' => 'Le mail et/ou le mot de passe sont incorrects']);
         }
 
@@ -74,7 +74,8 @@ class AuthController extends Controller
         ]);
     }
 
-    public function usersList(){
+    public function usersList()
+    {
         $Annonces = User::all();
         return response()->json($Annonces);
     }

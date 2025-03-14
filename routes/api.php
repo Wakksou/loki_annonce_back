@@ -14,13 +14,14 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('annonces', [AnnonceController::class, 'index']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'user']);
+    Route::post('annonces', [AnnonceController::class, 'store']);
 });
 
 Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
-    Route::get('annonces', [AnnonceController::class, 'index']);
-    Route::post('annonces', [AnnonceController::class, 'store']);
+
     Route::delete('annonces/{id}', [AnnonceController::class, 'destroy']);
     Route::get('/liste-users', [AuthController::class, 'usersList']);
     Route::post('/send-mail', [ContactController::class, 'sendMail']);
