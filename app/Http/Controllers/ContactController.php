@@ -13,13 +13,13 @@ class ContactController extends Controller
     {
 
         $validated = $request->validate([
-            'name' => 'required|string|max:255',
             'subject' => 'required|string|max:255',
             'message' => 'required|string|max:2000',
             'email' => 'required|email|max:255',
         ]);
         $details = [
-            'name' => $validated['name'],
+            'name' => "un name comme ca raf",
+            'subject' => $validated['subject'],
             'email' => $validated['email'],
             'message' => $validated['message'],
         ];
